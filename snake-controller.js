@@ -1,5 +1,6 @@
 var controller = {
   init: function() {
+    clearInterval(refreshIntervalId);
     view.clearScreen();
     view.resetSnake();
     view.init();

@@ -26,13 +26,16 @@ var view = {
     $snakeDiv = $('.snake');
     return (!collision($boardDiv, $snakeDiv));
   },
-
+  
   getKeyPress: function() {
+    //var refreshIntervalId;
+
     window.addEventListener('keydown', function(eventObject) {
       pressedKey = eventObject.code;
       
-
-      setInterval(function() {
+      clearInterval(refreshIntervalId);
+      
+      refreshIntervalId = setInterval(function() {
         var $snakeDiv = $('.snake');
         var $foodDiv = $('.food');
 
@@ -43,6 +46,7 @@ var view = {
           if (collision($snakeDiv, $foodDiv)) {
             $foodDiv.removeClass('food');
             model.generateFoodPosition();
+            growSnake();
             // TODO: Make snake longer
           };
 
@@ -54,6 +58,7 @@ var view = {
           if (collision($snakeDiv, $foodDiv)) {
             $foodDiv.removeClass('food');
             model.generateFoodPosition();
+            growSnake();
             // TODO: Make snake longer
           };
           break;
@@ -64,6 +69,7 @@ var view = {
           if (collision($snakeDiv, $foodDiv)) {
             $foodDiv.removeClass('food');
             model.generateFoodPosition();
+            growSnake();
             // TODO: Make snake longer
           };
           break;
@@ -74,9 +80,11 @@ var view = {
           if (collision($snakeDiv, $foodDiv)) {
             $foodDiv.removeClass('food');
             model.generateFoodPosition();
+            growSnake();
             // TODO: Make snake longer
           };
           break;
+        
         default:    
           break;
       };
@@ -85,9 +93,10 @@ var view = {
         controller.init();
       };
     }, 100);
+ 
     });
   },
-
+  
   snakeGrow: function() {
     
   }

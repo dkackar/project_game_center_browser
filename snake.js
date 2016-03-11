@@ -13,6 +13,7 @@ function collision($div1, $div2) {
   var r2 = x2 + w2;
 
   if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
+  
   return true;
 }
 
@@ -21,6 +22,13 @@ function outOfGrid() {
   $snakeDiv = $('.snake');
   return (!collision($boardDiv, $snakeDiv));
 }
+
+function growSnake() {
+  var snakeWidth = $('.snake').css('width');
+  $('.snake').css( 'width', parseInt(snakeWidth) + 30 );
+}
+
+var refreshIntervalId;
 
 $(document).ready(function() {
 
