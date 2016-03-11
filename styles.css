@@ -3,18 +3,25 @@
   height: 30px;
   width: 30px;
   display: inline-block;
+  padding:0;
+  margin:0;
 }
 
 .snake-container {
   position: relative;
-  margin: 0;
+  padding:0;
+  margin:0;
+  height: 450px;
+  width: 600px;
 }
 
 .snake {
   height: 30px;
   width: 30px;
-  top: 300px;
+  top: 0;
   left: 0;
+  padding:0;
+  margin:0;
   background-color: red;
   position: absolute;
 }
