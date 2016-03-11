@@ -3,6 +3,6 @@ var controller = {
     view.init();
     var pos = model.generateFoodPosition();
     view.showFood(pos);
-    view.moveSnake();
+    view.getKeyPress();
   }
 }

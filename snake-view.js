@@ -16,13 +16,25 @@ var view = {
     $(target).css("background","blue");
   },
 
-  moveSnake: function() {
-
-    $('body').keypress(function(eventbject) {
-          console.log("Key pressed");
-      var c = String.fromCharCode(eventObject.which);
-      console.log("Key pressed is :" + c);
-    });
+  moveSnake: function(eventObject) {
+    pressedKey = eventObject.code;
+    console.log("Key pressed is :" + pressedKey);
+    
   },
 
+  getKeyPress: function() {
+    window.addEventListener('keydown', function(eventObject) {
+      pressedKey = eventObject.code;
+
+      switch (pressedKey) {
+      case 'ArrowRight':
+        var left = $('.snake').css('left');
+        console.log(left);
+        $('.snake').css( 'left', parseInt(left) + 10 );
+        break;
+      default:
+        break;
+    }
+    });
+  }
 }
