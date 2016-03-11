@@ -4,6 +4,7 @@ var view = {
     $('.snake-container').empty();
     $('.food').empty();
     $('.snake').empty();
+    $('.snake').append('<div class="snake-block"></div>')
   },
 
   resetSnake: function() {
@@ -23,7 +24,7 @@ var view = {
 
   outOfGrid: function() {
     $boardDiv = $('.snake-container');
-    $snakeDiv = $('.snake');
+    $snakeDiv = $('.snake-block');
     return (!collision($boardDiv, $snakeDiv));
   },
   
@@ -37,52 +38,30 @@ var view = {
       
       refreshIntervalId = setInterval(function() {
         var $snakeDiv = $('.snake');
-        var $foodDiv = $('.food');
 
         switch (pressedKey) {
         case 'ArrowRight':
-          var left = $('.snake').css('left');
-          $('.snake').css( 'left', parseInt(left) + 10 );
-          if (collision($snakeDiv, $foodDiv)) {
-            $foodDiv.removeClass('food');
-            model.generateFoodPosition();
-            growSnake();
-            // TODO: Make snake longer
-          };
-
+          var left = $snakeDiv.css('left');
+          $snakeDiv.css( 'left', parseInt(left) + 10 );
+          foodCollision();
           break;
 
         case 'ArrowLeft':
-          var left = $('.snake').css('left');
-          $('.snake').css( 'left', parseInt(left) - 10 );
-          if (collision($snakeDiv, $foodDiv)) {
-            $foodDiv.removeClass('food');
-            model.generateFoodPosition();
-            growSnake();
-            // TODO: Make snake longer
-          };
+          var left = $snakeDiv.css('left');
+          $snakeDiv.css( 'left', parseInt(left) - 10 );
+          foodCollision();
           break;
 
         case 'ArrowUp':
-          var top = $('.snake').css('top');
-          $('.snake').css( 'top', parseInt(top) - 10 );
-          if (collision($snakeDiv, $foodDiv)) {
-            $foodDiv.removeClass('food');
-            model.generateFoodPosition();
-            growSnake();
-            // TODO: Make snake longer
-          };
+          var top = $snakeDiv.css('top');
+          $snakeDiv.css( 'top', parseInt(top) - 10 );
+          foodCollision();
           break;
 
         case 'ArrowDown':
-          var top = $('.snake').css('top');
-          $('.snake').css( 'top', parseInt(top) + 10 );
-          if (collision($snakeDiv, $foodDiv)) {
-            $foodDiv.removeClass('food');
-            model.generateFoodPosition();
-            growSnake();
-            // TODO: Make snake longer
-          };
+          var top = $snakeDiv.css('top');
+          $snakeDiv.css( 'top', parseInt(top) + 10 );
+          foodCollision();
           break;
         
         default:    
@@ -96,10 +75,6 @@ var view = {
  
     });
   },
-  
-  snakeGrow: function() {
-    
-  }
 
   
 }

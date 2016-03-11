@@ -19,13 +19,38 @@ function collision($div1, $div2) {
 
 function outOfGrid() {
   $boardDiv = $('.snake-container');
-  $snakeDiv = $('.snake');
-  return (!collision($boardDiv, $snakeDiv));
+  $snakeBlockDiv = $('.snake-block');
+  return (!collision($boardDiv, $snakeBlockDiv));
 }
 
 function growSnake() {
   var snakeWidth = $('.snake').css('width');
-  $('.snake').css( 'width', parseInt(snakeWidth) + 30 );
+  $('.snake-block:first').clone().appendTo($('.snake'));
+}
+
+function foodCollision() {
+  var $snakeDiv = $('.snake-block:first');
+  var $foodDiv = $('.food');
+
+  if (collision($snakeDiv, $foodDiv)) {
+    $foodDiv.removeClass('food');
+    model.generateFoodPosition();
+    growSnake();
+  };
+}
+
+function moveSnakeBlocks() {
+
+}
+
+function renderSnake() {
+  var $snakeBlocks = $('.snake-block');
+  var blockNumber = $snakeBlocks.length;
+  var coordinates = [$('.snake-block:first').css('top'), $('.snake-block:first').css('left')]
+
+  for (i=0; i < blockNumber; i++) {
+    
+  }
 }
 
 var refreshIntervalId;
