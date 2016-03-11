@@ -1,0 +1,20 @@
+.grid-square {
+  background-color: #DDCC99;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+}
+
+.snake-container {
+  position: relative;
+  margin: 0;
+}
+
+.snake {
+  height: 30px;
+  width: 30px;
+  top: 300px;
+  left: 0;
+  background-color: red;
+  position: absolute;
+}
