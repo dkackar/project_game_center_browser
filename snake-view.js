@@ -26,15 +26,30 @@ var view = {
     window.addEventListener('keydown', function(eventObject) {
       pressedKey = eventObject.code;
 
-      switch (pressedKey) {
-      case 'ArrowRight':
-        var left = $('.snake').css('left');
-        console.log(left);
-        $('.snake').css( 'left', parseInt(left) + 10 );
-        break;
-      default:
-        break;
-    }
+      setInterval(function() {
+        switch (pressedKey) {
+        case 'ArrowRight':
+          var left = $('.snake').css('left');
+          $('.snake').css( 'left', parseInt(left) + 10 );
+          break;
+
+        case 'ArrowLeft':
+          var left = $('.snake').css('left');
+          $('.snake').css( 'left', parseInt(left) - 10 );
+          break;
+
+        case 'ArrowUp':
+          var top = $('.snake').css('top');
+          $('.snake').css( 'top', parseInt(top) - 10 );
+          break;
+
+        case 'ArrowDown':
+          var top = $('.snake').css('top');
+          $('.snake').css( 'top', parseInt(top) + 10 );
+          break;
+        default:
+          break;
+      }}, 100);
     });
   }
 }
